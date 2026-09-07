@@ -1,5 +1,6 @@
 import RevealOnScroll from './RevealOnScroll'
 
+// Real OJT deployment — PNP Agoo (Agoo Municipal Police Station, La Union).
 // Photos load automatically from  public/images/ojt/  (ojt-1.jpg ... ojt-3.jpg).
 // `ratio` matches each photo's NATIVE aspect ratio so nothing is stretched.
 const OJT_INFO = {
@@ -20,83 +21,109 @@ const PHOTOS = [
   {
     image: '/images/ojt/ojt-2.jpg',
     ratio: '2048 / 1536',
-    span: 'wide',
+    span: 'span-8',
     caption: 'Equipment handover with station personnel during our deployment at PNP Agoo.',
   },
   {
     image: '/images/ojt/ojt-1.jpg',
     ratio: '1152 / 2048',
-    span: 'half',
     caption: 'Cutting and assembling laminated reminder stickers and IDs for the station.',
   },
   {
     image: '/images/ojt/ojt-3.jpg',
     ratio: '1532 / 2048',
-    span: 'half',
     caption: 'Handling station records with personnel and fellow trainees.',
   },
 ]
 
-function OJTPhoto({ photo }) {
+const LOG_CHIPS = ['Records encoding', 'Media transfers', 'Station artwork', 'Lamination & IDs']
+
+function OJTPhoto({ photo, className = '' }) {
   const handleImgError = (e) => {
-    e.target.closest('.ojt-photo').classList.add('is-placeholder')
+    e.target.closest('.photo-tile').classList.add('is-placeholder')
     e.target.style.display = 'none'
   }
 
   return (
-    <figure className={`ojt-photo-card${photo.span === 'wide' ? ' wide' : ''}`}>
-      <div className="ojt-photo" style={{ aspectRatio: photo.ratio }}>
-        <img src={photo.image} alt={photo.caption} loading="lazy" onError={handleImgError} />
-        <div className="achievement-placeholder">
-          <span className="placeholder-icon">📷</span>
-          <span className="placeholder-text">Photo coming soon</span>
-        </div>
-      </div>
-      <figcaption className="ojt-caption">{photo.caption}</figcaption>
+    <figure className={`photo-tile tile ${className}`}>
+      <img
+        src={photo.image}
+        alt={photo.caption}
+        style={{ aspectRatio: photo.ratio }}
+        loading="lazy"
+        onError={handleImgError}
+      />
+      <figcaption className="photo-cap">
+        <span className="photo-title">{photo.caption}</span>
+      </figcaption>
     </figure>
   )
 }
 
 export default function OJTGallery() {
   return (
-    <section className="section ojt" id="ojt">
+    <section className="section" id="ojt">
       <div className="container">
         <RevealOnScroll>
-          <div className="section-header">
-            <p className="section-label">Professional Experience</p>
-            <h2 className="section-title">OJT <span className="text-accent">Performance</span></h2>
-            <div className="section-line" />
-          </div>
+          <header className="beat">
+            <span className="beat-index">06</span>
+            <div>
+              <h2 className="beat-title">The badge</h2>
+              <p className="beat-sub">My OJT logbook — real clerical, media, and artwork work inside a police station.</p>
+            </div>
+          </header>
         </RevealOnScroll>
-        <RevealOnScroll>
-          <div className="ojt-content">
-            <div className="ojt-info">
-              <div className="ojt-meta">
-                <div className="ojt-meta-item">
-                  <span className="ojt-meta-label">Company</span>
-                  <span className="ojt-meta-value">{OJT_INFO.company}</span>
-                </div>
-                <div className="ojt-meta-item">
-                  <span className="ojt-meta-label">Role</span>
-                  <span className="ojt-meta-value">{OJT_INFO.role}</span>
-                </div>
-                <div className="ojt-meta-item">
-                  <span className="ojt-meta-label">Location</span>
-                  <span className="ojt-meta-value">{OJT_INFO.location}</span>
-                </div>
+
+        <div className="bento">
+          <RevealOnScroll className="span-5 tile">
+            <p className="tile-label">Deployment</p>
+            <div className="ojt-meta">
+              <div className="ojt-meta-row">
+                <span className="fact-key">Station</span>
+                <span className="fact-val">{OJT_INFO.company}</span>
               </div>
-              <p className="ojt-summary">{OJT_INFO.summary}</p>
-              <h3 className="ojt-highlights-title">Key Highlights</h3>
-              <ul className="ojt-highlights">
-                {OJT_INFO.highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
+              <div className="ojt-meta-row">
+                <span className="fact-key">Role</span>
+                <span className="fact-val">{OJT_INFO.role}</span>
+              </div>
+              <div className="ojt-meta-row">
+                <span className="fact-key">Location</span>
+                <span className="fact-val">{OJT_INFO.location}</span>
+              </div>
             </div>
-            <div className="ojt-photos">
-              {PHOTOS.map((photo, i) => <OJTPhoto key={i} photo={photo} />)}
+            <p className="body-text ojt-summary">{OJT_INFO.summary}</p>
+          </RevealOnScroll>
+
+          <RevealOnScroll className="span-7 tile">
+            <p className="tile-label">Key highlights</p>
+            <ul className="ojt-highlights">
+              {OJT_INFO.highlights.map((h, i) => (
+                <li key={i}>{h}</li>
+              ))}
+            </ul>
+          </RevealOnScroll>
+
+          <RevealOnScroll className={PHOTOS[0].span}>
+            <OJTPhoto photo={PHOTOS[0]} />
+          </RevealOnScroll>
+
+          <RevealOnScroll className="span-4 tile">
+            <p className="tile-label">Also in the log</p>
+            <div className="chip-row">
+              {LOG_CHIPS.map((c) => (
+                <span className="chip chip-sm" key={c}>{c}</span>
+              ))}
             </div>
-          </div>
+            <p className="body-text">
+              Between the big tasks were the small ones that kept the station moving —
+              every sticker laminated and every file renamed was part of the service.
+            </p>
+          </RevealOnScroll>
+        </div>
+
+        <RevealOnScroll className="ojt-duo">
+          <OJTPhoto photo={PHOTOS[1]} />
+          <OJTPhoto photo={PHOTOS[2]} />
         </RevealOnScroll>
       </div>
     </section>

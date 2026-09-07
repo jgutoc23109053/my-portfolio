@@ -1,6 +1,5 @@
 import RevealOnScroll from './RevealOnScroll'
 
-// ✏️ EDIT ME — your hobbies & interests
 const HOBBIES = [
   {
     icon: '🏐',
@@ -26,26 +25,27 @@ const HOBBIES = [
 
 export default function Hobbies() {
   return (
-    <section className="section hobbies" id="hobbies">
+    <section className="section" id="hobbies">
       <div className="container">
         <RevealOnScroll>
-          <div className="section-header">
-            <p className="section-label">Beyond Code</p>
-            <h2 className="section-title">Hobbies &amp; <span className="text-accent">Interests</span></h2>
-            <div className="section-line" />
-          </div>
+          <header className="beat">
+            <span className="beat-index">07</span>
+            <div>
+              <h2 className="beat-title">Off court</h2>
+              <p className="beat-sub">How I recharge when there&rsquo;s no training and no deadline.</p>
+            </div>
+          </header>
         </RevealOnScroll>
-        <RevealOnScroll>
-          <div className="hobbies-grid">
-            {HOBBIES.map(hobby => (
-              <div className="hobby-card" key={hobby.title}>
-                <div className="hobby-icon">{hobby.icon}</div>
-                <h3 className="hobby-title">{hobby.title}</h3>
-                <p className="hobby-desc">{hobby.description}</p>
-              </div>
-            ))}
-          </div>
-        </RevealOnScroll>
+
+        <div className="bento">
+          {HOBBIES.map((h) => (
+            <RevealOnScroll key={h.title} className="span-3 tile hobby-tile">
+              <span className="hobby-icon">{h.icon}</span>
+              <h3 className="hobby-title">{h.title}</h3>
+              <p className="hobby-desc">{h.description}</p>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   )

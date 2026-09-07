@@ -1,7 +1,6 @@
 import RevealOnScroll from './RevealOnScroll'
 
-// ✏️ EDIT ME — captions & years below are editable. Photos load automatically
-// from  public/images/volleyball/  (vb-1.jpg ... vb-5.jpg).
+// Photos load automatically from  public/images/volleyball/  (vb-1.jpg ... vb-5.jpg).
 // `ratio` matches each photo's NATIVE aspect ratio so nothing is stretched or cropped.
 const ACHIEVEMENTS = [
   {
@@ -10,20 +9,7 @@ const ACHIEVEMENTS = [
     year: '2024',
     title: 'Night League — At the Net',
     description: 'Wearing the #23 jersey, holding the net during an evening league match.',
-  },
-  {
-    image: '/images/volleyball/vb-2.jpg',
-    ratio: '2048 / 1536',
-    year: '2024',
-    title: 'Team CON-FIRM',
-    description: 'Squad photo with my CON-FIRM Volleyball teammates — jersey #23, ball in hand.',
-  },
-  {
-    image: '/images/volleyball/vb-3.jpg',
-    ratio: '1536 / 2048',
-    year: '2024',
-    title: 'Ready to Serve',
-    description: 'Portrait in the yellow CON-FIRM #23 jersey, moments before the game.',
+    span: 'span-6',
   },
   {
     image: '/images/volleyball/vb-4.jpg',
@@ -31,6 +17,15 @@ const ACHIEVEMENTS = [
     year: '2023',
     title: 'Tournament Brotherhood',
     description: 'Side by side with fellow athletes from different teams during tournament season.',
+    span: 'span-6',
+  },
+  {
+    image: '/images/volleyball/vb-2.jpg',
+    ratio: '2048 / 1536',
+    year: '2024',
+    title: 'Team CON-FIRM',
+    description: 'Squad photo with my CON-FIRM Volleyball teammates — jersey #23, ball in hand.',
+    span: 'span-6',
   },
   {
     image: '/images/volleyball/vb-5.jpg',
@@ -38,57 +33,81 @@ const ACHIEVEMENTS = [
     year: '2025',
     title: 'Game-Day Spike',
     description: 'Attacking over the net — match action featured by The College Forum.',
+    span: 'span-6',
+  },
+  {
+    image: '/images/volleyball/vb-3.jpg',
+    ratio: '1536 / 2048',
+    year: '2024',
+    title: 'Ready to Serve',
+    description: 'Portrait in the yellow CON-FIRM #23 jersey, moments before the game.',
+    span: 'span-5',
   },
 ]
 
-function AchievementCard({ item }) {
+function PhotoTile({ item }) {
   const handleImgError = (e) => {
-    // Photo not added yet — show placeholder instead
-    e.target.closest('.achievement-photo').classList.add('is-placeholder')
+    e.target.closest('.photo-tile').classList.add('is-placeholder')
     e.target.style.display = 'none'
   }
 
   return (
-    <div className="achievement-card">
-      <div className="achievement-photo" style={{ aspectRatio: item.ratio }}>
-        <img src={item.image} alt={item.title} loading="lazy" onError={handleImgError} />
-        <div className="achievement-placeholder">
-          <span className="placeholder-icon">📷</span>
-          <span className="placeholder-text">Photo coming soon</span>
-        </div>
-        <span className="achievement-year">{item.year}</span>
-      </div>
-      <div className="achievement-body">
-        <h3 className="achievement-title">{item.title}</h3>
-        <p className="achievement-desc">{item.description}</p>
-      </div>
-    </div>
+    <figure className={`photo-tile tile ${item.span}`}>
+      <img
+        src={item.image}
+        alt={item.title}
+        style={{ aspectRatio: item.ratio }}
+        loading="lazy"
+        onError={handleImgError}
+      />
+      <figcaption className="photo-cap">
+        <span className="photo-title">{item.title}</span>
+        <span className="photo-year">{item.year}</span>
+      </figcaption>
+    </figure>
   )
 }
 
 export default function VolleyballGallery() {
   return (
-    <section className="section volleyball" id="volleyball">
+    <section className="section" id="volleyball">
       <div className="container">
         <RevealOnScroll>
-          <div className="section-header">
-            <p className="section-label">Student-Athlete Life</p>
-            <h2 className="section-title">Volleyball <span className="text-accent">Achievements</span></h2>
-            <div className="section-line" />
-          </div>
+          <header className="beat">
+            <span className="beat-index">05</span>
+            <div>
+              <h2 className="beat-title">On the court</h2>
+              <p className="beat-sub">
+                Volleyball built the discipline, resilience, and teamwork I bring to everything else.
+              </p>
+            </div>
+          </header>
         </RevealOnScroll>
-        <RevealOnScroll>
-          <p className="section-intro">
-            More than a sport — volleyball built the discipline, resilience, and teamwork
-            I bring to everything I do. These are the moments and milestones from my
-            journey on the court.
-          </p>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <div className="achievement-grid">
-            {ACHIEVEMENTS.map((item, i) => <AchievementCard key={i} item={item} />)}
-          </div>
-        </RevealOnScroll>
+
+        <div className="bento">
+          {ACHIEVEMENTS.map((item) => (
+            <RevealOnScroll key={item.image} className={item.span}>
+              <PhotoTile item={item} />
+            </RevealOnScroll>
+          ))}
+
+          <RevealOnScroll className="span-7 tile vb-story">
+            <p className="tile-label">The story</p>
+            <h3 className="story-title">Jersey <span className="text-yellow">#23</span></h3>
+            <p className="body-text">
+              I play for Team CON-FIRM — a squad built from late-night trainings, weekend
+              tournaments, and one unspoken rule: nobody drops the ball without a hand
+              reaching to pick them up. Night leagues taught me to read the game under
+              pressure, while tournament season taught me to respect every opponent.
+            </p>
+            <p className="body-text">
+              One of my match spikes was even featured by The College Forum — a small
+              milestone that reminded me the court is also a stage, and composure is
+              part of the craft. Same lesson I apply to code: stay calm, keep swinging,
+              and trust the reps.
+            </p>
+          </RevealOnScroll>
+        </div>
       </div>
     </section>
   )

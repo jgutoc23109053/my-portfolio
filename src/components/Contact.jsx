@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react'
 import RevealOnScroll from './RevealOnScroll'
 
-// ✏️ EDIT ME — update social links with your real profiles
 const SOCIALS = [
   { label: 'GitHub', icon: 'GH', href: 'https://github.com/jgutoc23109053' },
   { label: 'LinkedIn', icon: 'in', href: '#' },
@@ -124,68 +123,31 @@ export default function Contact() {
     `form-input${errors[name] && touched[name] ? ' input-error' : ''}${!errors[name] && touched[name] && form[name] ? ' input-success' : ''}`
 
   return (
-    <section className="section contact" id="contact">
+    <section className="section" id="contact">
       <div className="container">
         <RevealOnScroll>
-          <div className="section-header">
-            <p className="section-label">Let's Connect</p>
-            <h2 className="section-title">Get In <span className="text-accent">Touch</span></h2>
-            <div className="section-line" />
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <div className="contact-wrapper">
-            <div className="contact-info">
-              <h3 className="contact-heading">Have a question or want to work together?</h3>
-              <p className="contact-text">
-                I'm currently seeking an OJT position and am open to collaboration opportunities.
-                Whether it's a tech project or a spot on the court, I'd love to hear from you.
-                Use the form, email me directly, or reach out through my socials below.
-              </p>
-              <a className="contact-email" href={`mailto:${EMAIL}`}>
-                <span className="email-icon">✉</span> {EMAIL}
-              </a>
-              <div className="contact-socials">
-                {SOCIALS.map(s => (
-                  <a
-                    key={s.label}
-                    className="social-btn"
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    title={s.label}
-                  >
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
-              <div className="contact-features">
-                <div className="contact-feature">
-                  <span className="feature-icon">⚡</span>
-                  <div>
-                    <strong>Fast Delivery</strong>
-                    <p>Messages sent via Web3Forms API</p>
-                  </div>
-                </div>
-                <div className="contact-feature">
-                  <span className="feature-icon">🔒</span>
-                  <div>
-                    <strong>Secure</strong>
-                    <p>End-to-end encrypted transmission</p>
-                  </div>
-                </div>
-                <div className="contact-feature">
-                  <span className="feature-icon">⚙</span>
-                  <div>
-                    <strong>Real-time Validation</strong>
-                    <p>Client-side form verification</p>
-                  </div>
-                </div>
-              </div>
+          <header className="beat">
+            <span className="beat-index">08</span>
+            <div>
+              <h2 className="beat-title">Say hello</h2>
+              <p className="beat-sub">An opening, a project, or a friendly game — my inbox is always in play.</p>
             </div>
+          </header>
+        </RevealOnScroll>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="bento">
+          <RevealOnScroll className="span-12 tile contact-intro">
+            <h3 className="contact-big">
+              Let&rsquo;s build something <span className="text-yellow">worth serving.</span>
+            </h3>
+            <p className="body-text">
+              I recently completed my OJT at PNP Agoo and I&rsquo;m open to collaborations,
+              opportunities, and pick-up games alike. Use the form or reach me directly below.
+            </p>
+          </RevealOnScroll>
+
+          <RevealOnScroll className="span-7 tile">
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
               {['name', 'email', 'subject', 'message'].map(field => (
                 <div className="form-group" key={field}>
                   <label className="form-label" htmlFor={field}>
@@ -227,13 +189,13 @@ export default function Contact() {
                 </div>
               ))}
 
-              <button type="submit" className="btn btn-primary btn-submit" disabled={sending}>
+              <button type="submit" className="btn btn-solid btn-submit" disabled={sending}>
                 {sending ? (
                   <span>
                     <svg className="spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" strokeDasharray="31.4 31.4" strokeLinecap="round"/></svg>
                     {' '}Sending...
                   </span>
-                ) : 'Send Message'}
+                ) : 'Send message'}
               </button>
 
               {msg && (
@@ -243,8 +205,38 @@ export default function Contact() {
                 </div>
               )}
             </form>
+          </RevealOnScroll>
+
+          <div className="span-5 contact-side">
+            <RevealOnScroll className="tile">
+              <p className="tile-label">Direct line</p>
+              <a className="contact-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <div className="contact-socials">
+                {SOCIALS.map(s => (
+                  <a
+                    key={s.label}
+                    className="social-btn"
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    title={s.label}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll className="tile">
+              <p className="tile-label">Good to know</p>
+              <ul className="know-list">
+                <li>Messages land in my inbox via the Web3Forms API</li>
+                <li>Fields are validated in real time — no silent failures</li>
+                <li>I usually reply within a day, faster after training</li>
+              </ul>
+            </RevealOnScroll>
           </div>
-        </RevealOnScroll>
+        </div>
       </div>
     </section>
   )

@@ -1,96 +1,81 @@
-import { useState } from 'react'
 import RevealOnScroll from './RevealOnScroll'
-
-const FILTERS = [
-  { label: 'All', value: 'all' },
-  { label: 'Java', value: 'java' },
-  { label: 'Web Dev', value: 'web' },
-  { label: 'Design', value: 'design' },
-]
 
 const PROJECTS = [
   {
-    year: '2024', icon: '🎮',
-    title: 'CCS Quest — Java 2D Platformer Game',
+    year: '2024',
+    icon: '🧠',
+    title: 'QuizBuddy — Java Quiz Application',
     role: 'Programmer',
-    category: 'java',
+    span: 'span-7',
     details: [
-      'Built a simple 2D platformer game in Java as a school project, featuring levels, obstacle courses, and arcade-style gameplay.',
-      'Applied basic OOP concepts — classes, methods, and loops — to program movement, jumping, and collision detection.',
-      'Strengthened my logic and problem-solving by testing, debugging, and polishing the gameplay loop.',
+      'Built a Java quiz application that serves multiple-choice rounds from a question bank and scores answers instantly.',
+      'Modeled questions, choices, and results as separate classes, keeping data apart from quiz logic.',
+      'Added a post-round review screen that lists every missed item with the correct answer.',
     ],
-    tech: ['Java', 'OOP', 'Game Logic'],
+    tech: ['Java', 'OOP', 'ArrayList', 'File I/O'],
   },
   {
-    year: '2025', icon: '📋',
-    title: 'Magical Desenyos — Offline Event Management System',
+    year: '2025',
+    icon: '📚',
+    title: 'StudySpace — Study Room Booking Web App',
     role: 'Front-End Developer',
-    category: 'web',
+    span: 'span-5',
     details: [
-      'Developed an offline event management system for an event styling business using HTML, CSS, and JavaScript.',
-      'Created pages for client records, vendor inventory, and event schedules with simple forms and input validation.',
-      'Added report and invoice exports so the owner can track payments and records even without internet access.',
+      'Developed a web app for reserving library study rooms, built around a weekly schedule grid of open and taken slots.',
+      'Wrote client-side validation that blocks double bookings and invalid time ranges before submission.',
+      'Designed a simple dashboard where students view, filter, and cancel upcoming reservations.',
     ],
     tech: ['HTML', 'CSS', 'JavaScript'],
   },
   {
-    year: '2025', icon: '🛒',
-    title: 'WishCart — Web-Based Shopping Organizer',
-    role: 'Front-End Developer & Graphics Designer',
-    category: 'web design',
+    year: '2025',
+    icon: '🍜',
+    title: 'CampusEats — Canteen Menu & Price Checker UI',
+    role: 'UI/UX Designer & Developer',
+    span: 'span-12',
     details: [
-      'Designed and built a web app for saving and organizing product links from different online shopping sites.',
-      'Implemented log-in and sign-up pages with basic input validation, plus a simple user profile dashboard.',
-      'Practiced UI/UX design fundamentals to keep the layout clean, engaging, and responsive across devices.',
+      'Designed a mobile-friendly interface for browsing canteen stalls, menus, and daily prices in one place.',
+      'Implemented search plus category filters for meals, snacks, and drinks using a clean card layout with price tags.',
+      'Applied basic UI/UX principles — consistent spacing, readable type, and a two-tap flow from menu to item details.',
     ],
     tech: ['HTML', 'CSS', 'JavaScript', 'UI/UX'],
   },
 ]
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState('all')
-
-  const filtered = activeFilter === 'all'
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category.includes(activeFilter))
-
   return (
-    <section className="section projects" id="projects">
+    <section className="section" id="projects">
       <div className="container">
         <RevealOnScroll>
-          <div className="section-header">
-            <p className="section-label">What I've Built</p>
-            <h2 className="section-title">My <span className="text-accent">Projects</span></h2>
-            <div className="section-line" />
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <div className="project-filters">
-            {FILTERS.map(f => (
-              <button
-                key={f.value}
-                className={`filter-btn${activeFilter === f.value ? ' active' : ''}`}
-                onClick={() => setActiveFilter(f.value)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </RevealOnScroll>
-        <div className="projects-grid">
-          {filtered.map((project) => (
-            <div key={project.title} className="project-card fade-in">
-              <div className="project-year">{project.year}</div>
-              <div className="project-icon">{project.icon}</div>
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-role">{project.role}</p>
-              <ul className="project-details">
-                {project.details.map((d, i) => <li key={i}>{d}</li>)}
-              </ul>
-              <div className="project-tech">
-                {project.tech.map(t => <span key={t}>{t}</span>)}
-              </div>
+          <header className="beat">
+            <span className="beat-index">04</span>
+            <div>
+              <h2 className="beat-title">Campus builds</h2>
+              <p className="beat-sub">Class projects that taught me the fundamentals — each one shipped, defended, and demoed.</p>
             </div>
+          </header>
+        </RevealOnScroll>
+
+        <div className="bento">
+          {PROJECTS.map((p) => (
+            <RevealOnScroll key={p.title} className={`${p.span} tile project-tile`}>
+              <div className="project-top">
+                <span className="project-icon">{p.icon}</span>
+                <span className="project-year">{p.year}</span>
+              </div>
+              <h3 className="project-title">{p.title}</h3>
+              <p className="project-role">Role — {p.role}</p>
+              <ul className="project-points">
+                {p.details.map((d, i) => (
+                  <li key={i}>{d}</li>
+                ))}
+              </ul>
+              <div className="chip-row">
+                {p.tech.map((t) => (
+                  <span className="chip chip-sm" key={t}>{t}</span>
+                ))}
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
