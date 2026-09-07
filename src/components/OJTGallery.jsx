@@ -1,8 +1,8 @@
 import RevealOnScroll from './RevealOnScroll'
 
 // ✏️ EDIT ME — your OJT details
-// HOW TO ADD PHOTOS: drop your images into  public/images/ojt/
-// named ojt-1.jpg, ojt-2.jpg, ojt-3.jpg — they will appear automatically.
+// Photos load automatically from  public/images/ojt/  (ojt-1.jpg ... ojt-3.jpg).
+// `ratio` matches each photo's NATIVE aspect ratio so nothing is stretched.
 const OJT_INFO = {
   company: 'Company / Organization Name',
   role: 'OJT Trainee — Your Role',
@@ -18,9 +18,24 @@ const OJT_INFO = {
 }
 
 const PHOTOS = [
-  { image: '/images/ojt/ojt-1.jpg', caption: 'Replace with a caption — e.g. working on a task' },
-  { image: '/images/ojt/ojt-2.jpg', caption: 'Replace with a caption — e.g. with the team' },
-  { image: '/images/ojt/ojt-3.jpg', caption: 'Replace with a caption — e.g. final presentation' },
+  {
+    image: '/images/ojt/ojt-2.jpg',
+    ratio: '2048 / 1536',
+    span: 'wide',
+    caption: 'Equipment and property handover with station personnel.',
+  },
+  {
+    image: '/images/ojt/ojt-1.jpg',
+    ratio: '1152 / 2048',
+    span: 'half',
+    caption: 'Assembling and laminating official IDs and office materials.',
+  },
+  {
+    image: '/images/ojt/ojt-3.jpg',
+    ratio: '1532 / 2048',
+    span: 'half',
+    caption: 'Records and document handling at the office.',
+  },
 ]
 
 function OJTPhoto({ photo }) {
@@ -30,8 +45,8 @@ function OJTPhoto({ photo }) {
   }
 
   return (
-    <figure className="ojt-photo-card">
-      <div className="ojt-photo">
+    <figure className={`ojt-photo-card${photo.span === 'wide' ? ' wide' : ''}`}>
+      <div className="ojt-photo" style={{ aspectRatio: photo.ratio }}>
         <img src={photo.image} alt={photo.caption} loading="lazy" onError={handleImgError} />
         <div className="achievement-placeholder">
           <span className="placeholder-icon">📷</span>

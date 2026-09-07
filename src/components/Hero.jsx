@@ -32,8 +32,8 @@ export default function Hero() {
       <div className="hero-content">
         <RevealOnScroll className="hero-image-wrapper">
           <div className="hero-image-ring" />
-          {/* Replace public/profile.png with your own photo (keep the same file name) */}
-          <img src="/profile.png" alt="Jake Gutoc" className="hero-image" />
+          {/* Replace public/profile.jpg with your own photo (keep the same file name) */}
+          <img src="/profile.jpg" alt="Jake Gutoc" className="hero-image" />
         </RevealOnScroll>
         <RevealOnScroll className="hero-text">
           <p className="hero-greeting">Hello, I'm</p>

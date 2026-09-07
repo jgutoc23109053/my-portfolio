@@ -1,45 +1,43 @@
 import RevealOnScroll from './RevealOnScroll'
 
-// ✏️ EDIT ME — your volleyball achievements
-// HOW TO ADD PHOTOS: drop your images into  public/images/volleyball/
-// named vb-1.jpg, vb-2.jpg ... vb-6.jpg — they will appear automatically.
-// Update the captions and years below to match each photo.
+// ✏️ EDIT ME — captions & years below are editable. Photos load automatically
+// from  public/images/volleyball/  (vb-1.jpg ... vb-5.jpg).
+// `ratio` matches each photo's NATIVE aspect ratio so nothing is stretched or cropped.
 const ACHIEVEMENTS = [
   {
     image: '/images/volleyball/vb-1.jpg',
-    year: '2023',
-    title: 'Achievement Title 1',
-    description: 'Replace with a short caption — e.g. tournament name, your position, and what made this moment special.',
+    ratio: '1070 / 599',
+    year: '2024',
+    title: 'Night League — At the Net',
+    description: 'Wearing the #23 jersey, holding the net during an evening league match.',
   },
   {
     image: '/images/volleyball/vb-2.jpg',
-    year: '2023',
-    title: 'Achievement Title 2',
-    description: 'Replace with a short caption — e.g. awards received, team name, or memorable match highlights.',
+    ratio: '2048 / 1536',
+    year: '2024',
+    title: 'Team CON-FIRM',
+    description: 'Squad photo with my CON-FIRM Volleyball teammates — jersey #23, ball in hand.',
   },
   {
     image: '/images/volleyball/vb-3.jpg',
+    ratio: '1536 / 2048',
     year: '2024',
-    title: 'Achievement Title 3',
-    description: 'Replace with a short caption — e.g. Best Attacker, Team Captain recognition, or championship run.',
+    title: 'Ready to Serve',
+    description: 'Portrait in the yellow CON-FIRM #23 jersey, moments before the game.',
   },
   {
     image: '/images/volleyball/vb-4.jpg',
-    year: '2024',
-    title: 'Achievement Title 4',
-    description: 'Replace with a short caption for this achievement photo.',
+    ratio: '2048 / 1152',
+    year: '2023',
+    title: 'Tournament Brotherhood',
+    description: 'Side by side with fellow athletes from different teams during tournament season.',
   },
   {
     image: '/images/volleyball/vb-5.jpg',
+    ratio: '1080 / 810',
     year: '2025',
-    title: 'Achievement Title 5',
-    description: 'Replace with a short caption for this achievement photo.',
-  },
-  {
-    image: '/images/volleyball/vb-6.jpg',
-    year: '2025',
-    title: 'Achievement Title 6',
-    description: 'Replace with a short caption for this achievement photo.',
+    title: 'Game-Day Spike',
+    description: 'Attacking over the net — match action featured by The College Forum.',
   },
 ]
 
@@ -52,7 +50,7 @@ function AchievementCard({ item }) {
 
   return (
     <div className="achievement-card">
-      <div className="achievement-photo">
+      <div className="achievement-photo" style={{ aspectRatio: item.ratio }}>
         <img src={item.image} alt={item.title} loading="lazy" onError={handleImgError} />
         <div className="achievement-placeholder">
           <span className="placeholder-icon">📷</span>
