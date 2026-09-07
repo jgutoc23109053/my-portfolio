@@ -10,13 +10,14 @@ for deployment on **Vercel**.
 
 The site showcases:
 
-- About me with animated stat counters (student-athlete story)
+- Bento hero wall with stats and quick-facts chapter
 - Skills (Development, Design & Tools, Athlete & Soft Skills)
-- Projects with dynamic category filtering
+- Projects presented as bento tiles (QuizBuddy · StudySpace · CampusEats)
 - **Volleyball Achievements gallery** (5 real photos at native aspect ratios)
 - **OJT Performance section** (PNP Agoo deployment — info, highlights & photos)
 - Hobbies & Interests
-- Tech stack grid
+- Tech stack chips integrated into the Skills "Toolbox" section
+- Scrollytelling navigation: numbered chapter rail (desktop) + mobile overlay menu
 - Contact form powered by **Web3Forms** + direct email & social links
 
 ## Tech Stack
@@ -36,30 +37,28 @@ The site showcases:
 my-portfolio/
 ├── public/
 │   ├── images/
-│   │   ├── volleyball/      # 🏐 Drop achievement photos here (vb-1.jpg ... vb-6.jpg)
+│   │   ├── volleyball/      # 🏐 Drop achievement photos here (vb-1.jpg ... vb-5.jpg)
 │   │   └── ojt/             # 💼 Drop OJT photos here (ojt-1.jpg ... ojt-3.jpg)
 │   ├── favicon.svg          # JG favicon
-│   └── profile.png          # Profile photo (replace with your own photo)
+│   └── profile.jpg          # Profile photo (square, 960x960)
 ├── src/
+│   ├── chapters.js          # Shared chapter map (rail + mobile menu)
 │   ├── components/
-│   │   ├── About.jsx         # Student-athlete bio + animated statistics
-│   │   ├── BackToTop.jsx     # Floating scroll-to-top button
-│   │   ├── Contact.jsx       # Web3Forms form + email + social links
+│   │   ├── ChapterRail.jsx   # Fixed chapter nav (scrollytelling, desktop)
+│   │   ├── MobileMenu.jsx    # Mobile top bar + overlay menu
+│   │   ├── Hero.jsx          # Chapter 01 — bento hero wall
+│   │   ├── About.jsx         # Chapter 02 — story tile + quick facts
+│   │   ├── Skills.jsx        # Chapter 03 — toolbox chip tiles
+│   │   ├── Projects.jsx      # Chapter 04 — QuizBuddy / StudySpace / CampusEats
+│   │   ├── VolleyballGallery.jsx # Chapter 05 — photo bento + Jersey #23 story
+│   │   ├── OJTGallery.jsx    # Chapter 06 — PNP Agoo deployment log
+│   │   ├── Hobbies.jsx       # Chapter 07 — off-court tiles
+│   │   ├── Contact.jsx       # Chapter 08 — Web3Forms form + direct line
 │   │   ├── Footer.jsx        # Site footer
-│   │   ├── Hobbies.jsx       # Hobbies & interests cards
-│   │   ├── Hero.jsx          # Hero section with particles
-│   │   ├── Loader.jsx        # Loading screen animation
-│   │   ├── Navbar.jsx        # Responsive navigation bar
-│   │   ├── OJTGallery.jsx    # OJT performance: info + highlights + photos
-│   │   ├── Projects.jsx      # Filterable project cards
-│   │   ├── RevealOnScroll.jsx # Intersection Observer wrapper
-│   │   ├── ScrollProgress.jsx # Scroll progress bar
-│   │   ├── Skills.jsx        # Categorized skill tags
-│   │   ├── TechStack.jsx     # Tech stack grid section
-│   │   └── VolleyballGallery.jsx # Volleyball achievements photo grid
+│   │   └── RevealOnScroll.jsx # Intersection Observer reveal wrapper
 │   ├── App.jsx             # Root component (section order)
 │   ├── main.jsx            # React entry point
-│   └── index.css           # Global styles (blue & yellow theme)
+│   └── index.css           # Bento design system (blue & yellow, dark)
 ├── .env                    # Environment variables (GIT IGNORED)
 ├── .env.example            # Environment variable template
 ├── .gitignore              # Git ignore rules
