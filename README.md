@@ -1,5 +1,7 @@
 # Jake Gutoc — Personal Portfolio
 
+> 🌐 **Live site:** [https://jake-gutoc.vercel.app](https://jake-gutoc.vercel.app)
+
 ## Description
 
 A personal portfolio website for **Jake Gutoc** — Computer Science Student & Volleyball Athlete.
@@ -11,8 +13,8 @@ The site showcases:
 - About me with animated stat counters (student-athlete story)
 - Skills (Development, Design & Tools, Athlete & Soft Skills)
 - Projects with dynamic category filtering
-- **Volleyball Achievements gallery** (photo placeholders ready — add your photos)
-- **OJT Performance section** (info, highlights & photo placeholders)
+- **Volleyball Achievements gallery** (5 real photos at native aspect ratios)
+- **OJT Performance section** (PNP Agoo deployment — info, highlights & photos)
 - Hobbies & Interests
 - Tech stack grid
 - Contact form powered by **Web3Forms** + direct email & social links
