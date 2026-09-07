@@ -8,43 +8,42 @@ const FILTERS = [
   { label: 'Design', value: 'design' },
 ]
 
-// ✏️ EDIT ME — replace these sample entries with your own projects
 const PROJECTS = [
   {
     year: '2024', icon: '🎮',
-    title: 'Project One — Sample Java Project',
+    title: 'CCS Quest — Java 2D Platformer Game',
     role: 'Programmer',
     category: 'java',
     details: [
-      'Replace this with a short description of your Java project — what it does and why it matters.',
-      'Highlight the core features you built and the problems you solved.',
-      'Mention any team collaboration, awards, or recognition the project received.',
+      'Built a simple 2D platformer game in Java as a school project, featuring levels, obstacle courses, and arcade-style gameplay.',
+      'Applied basic OOP concepts — classes, methods, and loops — to program movement, jumping, and collision detection.',
+      'Strengthened my logic and problem-solving by testing, debugging, and polishing the gameplay loop.',
     ],
-    tech: ['Java', 'OOP', 'Sample Tech'],
+    tech: ['Java', 'OOP', 'Game Logic'],
   },
   {
     year: '2025', icon: '📋',
-    title: 'Project Two — Sample Web Project',
+    title: 'Magical Desenyos — Offline Event Management System',
     role: 'Front-End Developer',
     category: 'web',
     details: [
-      'Describe your web development project here — its purpose, users, and impact.',
-      'List key features such as dashboards, forms, authentication, or reporting.',
-      'Include measurable outcomes if available (time saved, users served, etc.).',
+      'Developed an offline event management system for an event styling business using HTML, CSS, and JavaScript.',
+      'Created pages for client records, vendor inventory, and event schedules with simple forms and input validation.',
+      'Added report and invoice exports so the owner can track payments and records even without internet access.',
     ],
-    tech: ['HTML', 'CSS', 'JavaScript', 'Sample Tech'],
+    tech: ['HTML', 'CSS', 'JavaScript'],
   },
   {
     year: '2025', icon: '🛒',
-    title: 'Project Three — Sample Design Project',
-    role: 'UI/UX Designer & Developer',
+    title: 'WishCart — Web-Based Shopping Organizer',
+    role: 'Front-End Developer & Graphics Designer',
     category: 'web design',
     details: [
-      'Showcase a design-focused project: the interface, experience, and visual system you created.',
-      'Explain your design process — wireframes, mockups, iteration, and user feedback.',
-      'Describe how the final product looked and performed across devices.',
+      'Designed and built a web app for saving and organizing product links from different online shopping sites.',
+      'Implemented log-in and sign-up pages with basic input validation, plus a simple user profile dashboard.',
+      'Practiced UI/UX design fundamentals to keep the layout clean, engaging, and responsive across devices.',
     ],
-    tech: ['UI/UX', 'Figma', 'Sample Tech'],
+    tech: ['HTML', 'CSS', 'JavaScript', 'UI/UX'],
   },
 ]
 

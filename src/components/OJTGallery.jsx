@@ -1,19 +1,18 @@
 import RevealOnScroll from './RevealOnScroll'
 
-// ✏️ EDIT ME — your OJT details
 // Photos load automatically from  public/images/ojt/  (ojt-1.jpg ... ojt-3.jpg).
 // `ratio` matches each photo's NATIVE aspect ratio so nothing is stretched.
 const OJT_INFO = {
-  company: 'Company / Organization Name',
-  role: 'OJT Trainee — Your Role',
-  duration: 'e.g. January 2026 – April 2026',
+  company: 'PNP Agoo — Agoo Municipal Police Station',
+  role: 'OJT Trainee (Student Intern)',
+  location: 'Agoo, La Union',
   summary:
-    'Replace this paragraph with an overview of your On-the-Job Training experience — the company you trained at, the team you worked with, and the kind of work you were assigned. Highlight what the placement exposed you to: real projects, tools used, workplace culture, and how it strengthened both your technical skills and professional confidence.',
+    'For my On-the-Job Training, I was deployed at PNP Agoo, the municipal police station of Agoo, La Union. Working alongside station personnel, I supported the day-to-day clerical and technical tasks that keep the station running — from encoding official records to handling digital files and producing printed materials for station use. The experience gave me a first-hand look at how discipline, accuracy, and public service come together in real government work, and it made me more detail-oriented, patient, and resourceful both as a student and as a future IT professional.',
   highlights: [
-    'Replace with a key task or project you handled during OJT.',
-    'Replace with a skill or tool you learned on the job.',
-    'Replace with an achievement, evaluation rating, or positive feedback received.',
-    'Replace with a teamwork or leadership moment worth mentioning.',
+    'Encoded and organized the details of 49 barangay officials and Sangguniang Kabataan (SK) officials into the station\u2019s records.',
+    'Assisted in transferring and organizing video files of PNP Agoo\u2019s raid operations for proper documentation.',
+    'Designed and produced stickers for the police station, along with laminated reminder IDs for station use.',
+    'Learned to handle sensitive records with care and follow proper data-handling procedures.',
   ],
 }
 
@@ -22,19 +21,19 @@ const PHOTOS = [
     image: '/images/ojt/ojt-2.jpg',
     ratio: '2048 / 1536',
     span: 'wide',
-    caption: 'Equipment and property handover with station personnel.',
+    caption: 'Equipment handover with station personnel during our deployment at PNP Agoo.',
   },
   {
     image: '/images/ojt/ojt-1.jpg',
     ratio: '1152 / 2048',
     span: 'half',
-    caption: 'Assembling and laminating official IDs and office materials.',
+    caption: 'Cutting and assembling laminated reminder stickers and IDs for the station.',
   },
   {
     image: '/images/ojt/ojt-3.jpg',
     ratio: '1532 / 2048',
     span: 'half',
-    caption: 'Records and document handling at the office.',
+    caption: 'Handling station records with personnel and fellow trainees.',
   },
 ]
 
@@ -82,8 +81,8 @@ export default function OJTGallery() {
                   <span className="ojt-meta-value">{OJT_INFO.role}</span>
                 </div>
                 <div className="ojt-meta-item">
-                  <span className="ojt-meta-label">Duration</span>
-                  <span className="ojt-meta-value">{OJT_INFO.duration}</span>
+                  <span className="ojt-meta-label">Location</span>
+                  <span className="ojt-meta-value">{OJT_INFO.location}</span>
                 </div>
               </div>
               <p className="ojt-summary">{OJT_INFO.summary}</p>
